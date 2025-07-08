@@ -13,12 +13,16 @@
       <a th:href="@{/comics}" class="btn btn-sm btngen mt-5"> 🠔 </a>
       <div
         th:object="${comic}"
-        class="container-sm d-flex gap-2 mt-5 justify-content-center"
+        class="container-sm d-flex gap-2 mt-5 justify-content-center mb-5"
       >
         <div class="leftCard">
           <h2>[[*{title}]]</h2>
           <h3>Autore: [[*{author}]]</h3>
-          <img th:src="*{imageUrl}" th:alt="*{title}" class="comicpicDetail" />
+          <img
+            th:src="*{imageUrl}"
+            th:alt="*{title}"
+            class="comicpicDetail p-5"
+          />
         </div>
         <div class="rightCard">
           <h5>Data di rilascio: [[*{releaseDate}]]</h5>
