@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8bit Manga - Elenco Comics</title>
+    <!-- Blocco per stile bootsrap e css -->
+    <th:block th:replace="~{ fragments/fragments :: Style}"></th:block>
+  </head>
+  <body>
+    <header th:replace="~{ fragments/fragments :: header}"></header>
+    <main class="container text-center overflow-x-hidden">
+      <h1 class="mt-5 mb-3">Elenco Comics</h1>
+      <div class="d-flex container justify-content-between align-items-center">
+        <a th:href="@{/comics/create}" class="btn btn-xs btngen"
+          >Aggiungi nuovo Comic</a
+        >
+
+        <form
+          th:action="@{/comics}"
+          method="get"
+          class="d-flex align-items-center gap-3"
+        >
+          <input
+            class="mt-5 mb-5 border-2"
+            type="text"
+            name="word"
+            placeholder="Cerca comic"
+            th:value="${word}"
+          />
+          <button type="submit" class="btn btngen">Cerca</button>
+        </form>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <table class="table" th:if="${comics.size() > 0}">
+            <thead>
+              <tr>
+                <th>Titolo</th>
+                <th>Autore</th>
+                <th>Categoria</th>
+                <th>Foto</th>
+                <th>Prezzo €</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="comic : ${comics}" th:object="${comic}">
+                <td>[[*{title}]]</td>
+                <td>[[*{author}]]</td>
+                <td>[[*{category.name}]]</td>
+                <td><img th:src="*{imageUrl}" alt="#" class="comicpic" /></td>
+                <td>[[*{price}]] €</td>
+                <td th:insert="~{ fragments/fragments :: comiclink}"></td>
+              </tr>
+            </tbody>
+          </table>
+          <p th:unless="${comics.size() > 0}">NO comics HERE :(</p>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <!-- Blocco per JS -->
+    <th:block th:replace="~{ fragments/fragments :: BootJS}"></th:block>
+  </body>
+</html>

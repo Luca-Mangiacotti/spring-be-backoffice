@@ -1,0 +1,58 @@
+header {
+  background-color: #d4d4d4;
+  border-bottom: solid #c77acf 5px;
+}
+
+.logo {
+  max-width: 15%;
+}
+
+.btnav {
+  background-color: #d4d4d4;
+  border: solid #7d4e81 2px;
+  color: #7d4e81;
+  font-weight: 700;
+}
+
+/* hover per bottoni nav */
+.hov:hover {
+  background-color: #c77acf;
+  color: #d4d4d4;
+}
+
+.btngen {
+  background-color: #c77acf;
+  border: solid #7d4e81 2px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.btngen:hover {
+  background-color: #7d4e81;
+  color: #d4d4d4;
+}
+
+.comicpic {
+  max-width: 100px;
+  height: 100px;
+}
+
+.comicpicDetail {
+  max-width: 500px;
+  height: 500px;
+}
+
+.rightCard {
+  background-color: #c77acf;
+  color: #ffffff;
+  border: solid #7d4e81 2px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.leftCard {
+  background-color: #d4d4d4;
+  border: solid #7d4e81 2px;
+  border-radius: 20px;
+  padding: 10px;
+}

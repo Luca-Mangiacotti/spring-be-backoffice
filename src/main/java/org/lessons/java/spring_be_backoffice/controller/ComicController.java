@@ -63,12 +63,12 @@ public class ComicController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("comic", new Comic());
-        model.addAttribute("category", categoryService.findAll());
+        model.addAttribute("categories", categoryService.findAll());
         return "comics/create";
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("pizza") Comic comicForm, BindingResult bindingResult, Model model) {
+    public String store(@Valid @ModelAttribute("comic") Comic comicForm, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
             return "comics/create";
@@ -88,7 +88,7 @@ public class ComicController {
     }
 
     @PostMapping("/edit/{id}")
-    public String update(@Valid @ModelAttribute("pizza") Comic comicForm, BindingResult bindingResult, Model model) {
+    public String update(@Valid @ModelAttribute("comic") Comic comicForm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "comics/edit";
         }
