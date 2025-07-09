@@ -86,7 +86,7 @@
               <div class="form-check mx-2" th:each="category : ${categories}">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   th:id="'category-' + ${category.id}"
                   th:value="${category.id}"
                   th:field="*{category}"
