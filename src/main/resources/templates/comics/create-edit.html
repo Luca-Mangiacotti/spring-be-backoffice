@@ -16,6 +16,11 @@
         class="mt-5 mb-5"
         th:text="${edit} ? 'Aggiorna comic' : 'Aggiungi nuovo comic'"
       ></h1>
+      <img
+        th:src="${edit} ? @{/imgs/octoedit.png} : @{/imgs/octocreate.png} "
+        alt="octocreatedit"
+        class="octocreate-edit"
+      />
       <div class="container-sm">
         <a th:href="@{'/comics/' + ${comic.id}}" class="btn btn-sm btngen mb-5">
           🠔 Indietro

@@ -23,6 +23,7 @@ header {
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -82,6 +83,24 @@ header {
   height: 100px;
 }
 
+/* INDEX PAGE (COMICS) */
+
+.octoindex {
+  max-width: 10%;
+  position: absolute;
+  top: 200px;
+  right: 500px;
+}
+
+/* DETAIL PAGE (COMICS) */
+
+.octodetail {
+  max-width: 20%;
+  position: absolute;
+  top: 500px;
+  right: 80px;
+}
+
 .comicpicDetail {
   max-width: 500px;
   height: 500px;
@@ -92,12 +111,25 @@ header {
   color: #ffffff;
   border: solid #7d4e81 2px;
   border-radius: 20px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .leftCard {
   background-color: #d4d4d4;
   border: solid #7d4e81 2px;
   border-radius: 20px;
-  padding: 10px;
+  padding: 20px;
+}
+
+.spacing {
+  height: 300px;
+}
+
+/* CREATE-EDIT (COMICS) */
+
+.octocreate-edit {
+  max-width: 18%;
+  position: absolute;
+  top: 210px;
+  right: 330px;
 }
