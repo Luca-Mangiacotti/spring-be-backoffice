@@ -38,7 +38,8 @@ public class CategoryController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
 
-        // con questo comando è come fare una query SELECT * from pizzas where "id" =id
+        // con questo comando è come fare una query SELECT * from categories where "id"
+        // =id
         Category category = categoryService.getById(id);
 
         if (category == null) {
@@ -53,17 +54,17 @@ public class CategoryController {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("Category", new Category());
-        model.addAttribute("category", categoryService.findAll());
-        return "categories/create";
+        model.addAttribute("category", new Category());
+        model.addAttribute("edit", false);
+        return "categories/create-edit";
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("pizza") Category CategoryForm, BindingResult bindingResult,
+    public String store(@Valid @ModelAttribute("category") Category CategoryForm, BindingResult bindingResult,
             Model model) {
 
         if (bindingResult.hasErrors()) {
-            return "categories/create";
+            return "categories/create-edit";
         }
         categoryService.create(CategoryForm);
         return "redirect:/categories";
@@ -74,19 +75,20 @@ public class CategoryController {
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("Category", categoryService.getById(id));
+        model.addAttribute("category", categoryService.getById(id));
         model.addAttribute("categories", categoryService.findAll());
-        return "categories/edit";
+        model.addAttribute("edit", true);
+        return "categories/create-edit";
     }
 
     @PostMapping("/edit/{id}")
-    public String update(@Valid @ModelAttribute("pizza") Category CategoryForm, BindingResult bindingResult,
+    public String update(@Valid @ModelAttribute("category") Category CategoryForm, BindingResult bindingResult,
             Model model) {
         if (bindingResult.hasErrors()) {
-            return "categories/edit";
+            return "categories/create-edit";
         }
         categoryService.update(CategoryForm);
-        return "redirect:/categories/{id}";
+        return "redirect:/categories";
 
     }
 

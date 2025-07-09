@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title th:text="'8bit Manga - aggiungi nuovo comic'"></title>
+    <title
+      th:text="${edit} ? '8bit Manga - modifica nuovo comic' : '8bit Manga - aggiungi comic'"
+    ></title>
     <!-- Blocco per stile bootsrap e css -->
     <th:block th:replace="~{ fragments/fragments :: Style}"></th:block>
   </head>
