@@ -9,8 +9,13 @@
   </head>
   <body>
     <header th:replace="~{ fragments/fragments :: header}"></header>
-    <main class="text-center">
-      <h1 class="mt-3 mb-3">BENVENUTO</h1>
+    <main class="text-center homeBG">
+      <h2 class="mb-4 homeH1 pt-4">Benvenuto in 8bit Manga</h2>
+      <img
+        th:src="@{/imgs/homeOcto.jpg}"
+        alt="homeoctopus"
+        class="octoimg mb-5"
+      />
     </main>
     <footer></footer>
     <!-- Blocco per JS -->

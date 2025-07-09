@@ -1,6 +1,28 @@
+/* TYPOGRAPHY */
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tektur {
+  font-family: "Tektur", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+/* CSS FOR COMPONENTS */
+
+/* HEADER */
 header {
   background-color: #d4d4d4;
   border-bottom: solid #c77acf 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
@@ -18,6 +40,29 @@ header {
 .hov:hover {
   background-color: #c77acf;
   color: #d4d4d4;
+}
+
+/* HOMEPAGE */
+
+.homeBG {
+  background-color: #5e3f65;
+}
+
+.octoimg {
+  max-width: 50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 20%;
+}
+
+.homeH1 {
+  color: #d4d4d4;
+}
+
+/* GENERICS */
+.standardBG {
+  background-color: #f5c8ff;
 }
 
 .btngen {
