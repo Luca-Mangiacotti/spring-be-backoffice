@@ -11,12 +11,15 @@
   </head>
   <body>
     <header th:replace="~{ fragments/fragments :: header}"></header>
-    <main class="text-center overflow-x-hidden">
+    <main class="text-center">
       <h1
         class="mt-5 mb-5"
         th:text="${edit} ? 'Aggiorna comic' : 'Aggiungi nuovo comic'"
       ></h1>
-      <div class="container">
+      <div class="container-sm">
+        <a th:href="@{'/comics/' + ${comic.id}}" class="btn btn-sm btngen mb-5">
+          🠔 Indietro
+        </a>
         <form
           id="new-comic-form"
           th:action="${edit} ? @{'/comics/edit/'+${comic.id}} : @{/comics/create}"

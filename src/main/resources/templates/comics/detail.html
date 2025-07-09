@@ -10,7 +10,7 @@
   <body>
     <header th:replace="~{ fragments/fragments :: header}"></header>
     <main class="container overflow-x-hidden">
-      <a th:href="@{/comics}" class="btn btn-sm btngen mt-5"> 🠔 </a>
+      <a th:href="@{/comics}" class="btn btn-sm btngen mt-5"> 🠔 Indietro </a>
       <div
         th:object="${comic}"
         class="container-sm d-flex gap-2 mt-5 justify-content-center mb-5"
@@ -26,64 +26,71 @@
         </div>
         <div class="rightCard">
           <h5>Data di rilascio: [[*{releaseDate}]]</h5>
+          <h5>Genere: [[*{category.name}]]</h5>
           <p>Descrizione: [[*{description}]]</p>
           <h4>disponibilità: [[*{stockQuantity}]] pz</h4>
           <h4>prezzo: [[*{price}]]€</h4>
         </div>
       </div>
 
-      <!-- Button trigger modal -->
-      <div class="text-center">
-        <button
-          type="button"
-          class="btn btngen"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-        >
-          Elimina
-        </button>
+      <div class="d-flex align-items-center gap-3 justify-content-center mb-5">
+        <a th:href="@{'/comics/edit/'+ *{id}}" class="btn btngen"> Modifica </a>
 
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="staticBackdrop"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                  Attenzione
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                Sei sicuro di voler eliminare il comic "[[${comic.title}]]" ?
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Annulla
-                </button>
-                <form
-                  th:action="@{/comics/delete/{id} (id = *{id})}"
-                  th:method="post"
-                  id="delete-form"
-                >
-                  <button class="btn btn-danger" type="submit">Elimina</button>
-                </form>
+        <!-- Button trigger modal -->
+        <div class="text-center">
+          <button
+            type="button"
+            class="btn btnav"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Elimina
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Attenzione
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  Sei sicuro di voler eliminare il comic "[[${comic.title}]]" ?
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Annulla
+                  </button>
+                  <form
+                    th:action="@{/comics/delete/{id} (id = *{id})}"
+                    th:method="post"
+                    id="delete-form"
+                  >
+                    <button class="btn btn-danger" type="submit">
+                      Elimina
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
