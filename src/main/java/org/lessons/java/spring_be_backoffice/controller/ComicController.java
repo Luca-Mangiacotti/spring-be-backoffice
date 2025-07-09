@@ -64,14 +64,14 @@ public class ComicController {
     public String create(Model model) {
         model.addAttribute("comic", new Comic());
         model.addAttribute("categories", categoryService.findAll());
-        return "comics/create";
+        return "comics/create-edit";
     }
 
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("comic") Comic comicForm, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            return "comics/create";
+            return "comics/create-edit";
         }
         comicService.create(comicForm);
         return "redirect:/comics";
@@ -84,13 +84,14 @@ public class ComicController {
     public String edit(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("comic", comicService.getById(id));
         model.addAttribute("categories", categoryService.findAll());
-        return "comics/edit";
+        model.addAttribute("edit", true);
+        return "comics/create-edit";
     }
 
     @PostMapping("/edit/{id}")
     public String update(@Valid @ModelAttribute("comic") Comic comicForm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "comics/edit";
+            return "comics/create-edit";
         }
         comicService.update(comicForm);
         return "redirect:/comics/{id}";

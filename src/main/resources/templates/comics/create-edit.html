@@ -10,11 +10,14 @@
   <body>
     <header th:replace="~{ fragments/fragments :: header}"></header>
     <main class="text-center overflow-x-hidden">
-      <h1 class="mt-5 mb-5">Aggiungi nuovo comic</h1>
+      <h1
+        class="mt-5 mb-5"
+        th:text="${edit} ? 'Aggiorna comic' : 'Aggiungi nuovo comic'"
+      ></h1>
       <div class="container">
         <form
           id="new-comic-form"
-          th:action="@{/comics/create}"
+          th:action="${edit} ? @{'/comics/edit/'+${comic.id}} : @{/comics/create}"
           method="post"
           th:object="${comic}"
         >
@@ -220,8 +223,12 @@
             </div>
           </div>
           <div class="mb-3 d-flex justify-content-center">
-            <input type="submit" class="btn btn-danger mx-3" value="Crea" />
-            <input type="reset" class="btn btn-warning mx-3" value="Reset" />
+            <input
+              type="submit"
+              class="btn btngen mx-3"
+              th:value="${edit} ? 'Aggiorna' : 'Crea'"
+            />
+            <input type="reset" class="btn btnav mx-3" value="Reset" />
           </div>
         </form>
       </div>
