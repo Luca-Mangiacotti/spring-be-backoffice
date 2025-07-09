@@ -112,6 +112,9 @@ header {
   border: solid #7d4e81 2px;
   border-radius: 20px;
   padding: 20px;
+  max-width: 400px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .leftCard {
