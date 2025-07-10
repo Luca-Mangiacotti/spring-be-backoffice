@@ -26,7 +26,18 @@
           ><img alt="logo" th:src="@{/imgs/logo.png}" class="logo"
         /></a>
         <nav class="d-flex justify-content-between align-items-center gap-3">
-          <!-- qui aggiungerò il login -->
+          <div
+            sec:authorize="isAuthenticated()"
+            class="d-flex align-items-center gap-2"
+          >
+            <span sec:authentication="name"></span> -
+            <span sec:authentication="principal.authorities"></span>
+
+            <a href="/logout" class="btn btngen">logout</a>
+          </div>
+          <div sec:authorize="isAnonymous()">
+            <a th:href="@{/login}" class="btn btnav hov">Login</a>
+          </div>
           <a th:href="@{/comics}" class="btn btnav font-weight-bold hov"
             >Comics</a
           >

@@ -12,7 +12,10 @@
     <main class="container text-center">
       <h1 class="mt-5 mb-3">Elenco Comics</h1>
       <div class="d-flex container justify-content-between align-items-center">
-        <a th:href="@{/comics/create}" class="btn btn-xs btngen"
+        <a
+          th:href="@{/comics/create}"
+          class="btn btn-xs btngen"
+          sec:authorize="hasAuthority('ADMIN')"
           >Aggiungi nuovo Comic</a
         >
         <img

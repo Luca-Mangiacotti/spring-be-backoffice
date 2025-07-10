@@ -13,7 +13,10 @@
       <h1 class="mt-5 mb-5 text-start">Elenco Categorie</h1>
       <div class="d-flex container-sm align-items-center gap-3">
         <a th:href="@{/comics}" class="btn btn-sm btngen"> 🠔 Indietro </a>
-        <a th:href="@{/categories/create}" class="btn btn-sm btngen"
+        <a
+          th:href="@{/categories/create}"
+          class="btn btn-sm btngen"
+          sec:authorize="hasAuthority('ADMIN')"
           >Aggiungi nuova Categoria</a
         >
       </div>
@@ -33,7 +36,10 @@
                 <td>[[*{name}]]</td>
                 <td>[[*{description}]]</td>
                 <td>
-                  <a th:href="@{'/categories/edit/'+ *{id}}" class="btn btngen"
+                  <a
+                    th:href="@{'/categories/edit/'+ *{id}}"
+                    class="btn btngen"
+                    sec:authorize="hasAuthority('ADMIN')"
                     >modifica</a
                   >
                 </td>
@@ -42,7 +48,13 @@
                     th:action="@{/categories/delete/{id} (id = *{id})}"
                     th:method="post"
                   >
-                    <button type="submit" class="btn btnav">elimina</button>
+                    <button
+                      type="submit"
+                      class="btn btnav"
+                      sec:authorize="hasAuthority('ADMIN')"
+                    >
+                      elimina
+                    </button>
                   </form>
                 </td>
               </tr>

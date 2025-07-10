@@ -6,6 +6,7 @@ import org.lessons.java.spring_be_backoffice.model.Comic;
 import org.lessons.java.spring_be_backoffice.service.CategoryService;
 import org.lessons.java.spring_be_backoffice.service.ComicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +29,8 @@ public class ComicController {
 
     // INDEX DEI COMICS
     @GetMapping
-    public String index(@RequestParam(name = "word", required = false) String word, Model model) {
+    public String index(@RequestParam(name = "word", required = false) String word, Model model,
+            Authentication authentication) {
         List<Comic> comics;
         if (word != null) {
             comics = comicService.findByTitle(word);
@@ -38,6 +40,7 @@ public class ComicController {
 
         model.addAttribute("comics", comics);
         model.addAttribute("word", word);
+        model.addAttribute("username", authentication.getName());
 
         return "comics/index";
     }
