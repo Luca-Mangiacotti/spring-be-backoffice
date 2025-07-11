@@ -47,6 +47,11 @@ public class ComicService {
         return comicRepository.findByCategoryNameContainingIgnoreCase(category);
     }
 
+    // FIND BY NAME AND CATEGORY
+    public List<Comic> findByTitleAndCategory(String title, String category) {
+        return comicRepository.findByTitleContainingIgnoreCaseAndCategoryNameContainingIgnoreCase(title, category);
+    }
+
     // CREATE
     public Comic create(Comic Comic) {
 

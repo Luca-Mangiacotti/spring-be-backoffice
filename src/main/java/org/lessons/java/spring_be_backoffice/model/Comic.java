@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -58,8 +59,8 @@ public class Comic {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToOne
-    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+
     @JoinColumn(name = "category_id")
     private Category category;
 

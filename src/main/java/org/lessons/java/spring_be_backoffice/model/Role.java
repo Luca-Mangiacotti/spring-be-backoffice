@@ -2,6 +2,8 @@ package org.lessons.java.spring_be_backoffice.model;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +27,7 @@ public class Role {
     private String name;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
-    @JasonBackReference
+    @JsonBackReference
     private Set<User> users;
 
     // GETTER E SETTER

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.lessons.java.spring_be_backoffice.model.Comic;
+import org.lessons.java.spring_be_backoffice.service.CategoryService;
 import org.lessons.java.spring_be_backoffice.service.ComicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +28,13 @@ public class ComicRestController {
 
     // Index
     @GetMapping
-    public List<Comic> index(@RequestParam(name = "word", required = false) String word) {
-        if (word != null) {
+    public List<Comic> index(@RequestParam(name = "word", required = false) String word,
+            @RequestParam(name = "category", required = false) String category) {
+        if (word != null && category != null) {
+            return comicService.findByTitleAndCategory(word, category);
+        } else if (category != null) {
+            return comicService.findByCategory(category);
+        } else if (word != null) {
             return comicService.findByTitle(word);
         }
         return comicService.findAll();

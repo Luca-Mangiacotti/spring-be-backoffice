@@ -11,4 +11,6 @@ public interface ComicRepository extends JpaRepository<Comic, Integer> {
 
     public List<Comic> findByCategoryNameContainingIgnoreCase(String name);
 
+    List<Comic> findByTitleContainingIgnoreCaseAndCategoryNameContainingIgnoreCase(String title, String category);
+
 }
