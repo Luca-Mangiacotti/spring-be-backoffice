@@ -37,6 +37,13 @@
                 <td>[[*{description}]]</td>
                 <td>
                   <a
+                    th:href="@{'/categories/' + *{id} + '/comics'}"
+                    th:text="*{name}"
+                    class="btn btngen"
+                  ></a>
+                </td>
+                <td>
+                  <a
                     th:href="@{'/categories/edit/'+ *{id}}"
                     class="btn btngen"
                     sec:authorize="hasAuthority('ADMIN')"

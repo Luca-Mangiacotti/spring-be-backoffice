@@ -3,7 +3,9 @@ package org.lessons.java.spring_be_backoffice.controller;
 import java.util.List;
 
 import org.lessons.java.spring_be_backoffice.model.Category;
+import org.lessons.java.spring_be_backoffice.model.Comic;
 import org.lessons.java.spring_be_backoffice.service.CategoryService;
+import org.lessons.java.spring_be_backoffice.service.ComicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,24 @@ public class CategoryController {
         model.addAttribute("categories", categories);
 
         return "categories/index";
+    }
+
+    // INDEX in base alla categoria
+    @Autowired
+    private ComicService comicService;
+
+    @GetMapping("/{id}/comics")
+    public String comicsByCategory(@PathVariable("id") Integer id, Model model) {
+        Category category = categoryService.getById(id);
+        if (category == null) {
+            return "redirect:/categories";
+        }
+        List<Comic> comics = comicService.findByCategory(category.getName());
+
+        model.addAttribute("category", category);
+        model.addAttribute("comics", comics);
+
+        return "categories/comics-by-category"; // crea questa pagina Thymeleaf
     }
 
     // DETTAGLIO DI UNA Category (SHOW)
