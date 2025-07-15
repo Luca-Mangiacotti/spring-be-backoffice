@@ -28,6 +28,7 @@
           th:action="@{/comics}"
           method="get"
           class="d-flex align-items-center gap-3"
+          th:classappend="${#authorization.expression('hasAuthority(''ADMIN'')')} ? '' : 'ms-auto'"
         >
           <input
             class="mt-5 mb-5 border-2"

@@ -22,7 +22,10 @@
         class="octocreate-edit"
       />
       <div class="container-sm">
-        <a th:href="@{'/comics/' + ${comic.id}}" class="btn btn-sm btngen mb-5">
+        <a
+          th:href="${edit} ? @{'/comics/'} + ${comic.id} : @{'/comics'}"
+          class="btn btn-sm btngen mb-5"
+        >
           🠔 Indietro
         </a>
         <form

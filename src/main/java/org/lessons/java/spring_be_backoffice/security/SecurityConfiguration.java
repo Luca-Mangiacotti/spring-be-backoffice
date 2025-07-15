@@ -24,7 +24,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/comics/create", "comics/edit/**").hasAnyAuthority("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/comics/**").hasAnyAuthority("ADMIN")
                 .requestMatchers("/categories").hasAnyAuthority("ADMIN", "USER")
-                .requestMatchers("/categories/**").hasAnyAuthority("ADMIN")
+                .requestMatchers("/categories/**").hasAnyAuthority("ADMIN", "USER")
                 .requestMatchers("/comics", "/comics/**").hasAnyAuthority("ADMIN", "USER")
                 .requestMatchers("/**").permitAll()
                 .requestMatchers("/api/comics/**").permitAll()
