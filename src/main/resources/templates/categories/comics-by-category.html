@@ -20,51 +20,49 @@
         🠔 Torna alle categorie
       </a>
 
-      <div th:if="${#lists.isEmpty(comics)}">
+      <div th:if="${comics.empty}">
         <p>Nessun fumetto trovato in questa categoria.</p>
       </div>
 
-      <div class="row" th:if="${!#lists.isEmpty(comics)}">
-        <div
-          class="container-sm d-flex flex-wrap gap-4 mt-4 justify-content-center"
-          th:each="comic : ${comics}"
-        >
-          <div class="card p-4" style="width: 22rem">
-            <img
-              th:src="${comic.imageUrl}"
-              th:alt="${comic.title}"
-              class="card-img-top comicpicDetail"
-            />
-            <div class="card-body">
-              <h5 class="card-title" th:text="${comic.title}">Titolo</h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                Autore: <span th:text="${comic.author}">Autore</span>
-              </h6>
-              <p class="card-text mt-2" th:text="${comic.description}">
-                Descrizione
-              </p>
-              <p class="mt-2">
-                <strong>Data di rilascio:</strong>
-                <span th:text="${comic.releaseDate}">Data</span>
-              </p>
-              <p>
-                <strong>Genere:</strong>
-                <span th:text="${comic.category.name}">Categoria</span>
-              </p>
-              <p>
-                <strong>Disponibilità:</strong>
-                <span th:text="${comic.stockQuantity}">0</span> pz
-              </p>
-              <p>
-                <strong>Prezzo:</strong>
-                <span th:text="${comic.price}">0</span> €
-              </p>
-              <a
-                th:href="@{'/comics/' + ${comic.id}}"
-                class="btn btn-sm btngen mt-2"
-                >Dettaglio</a
-              >
-            </div>
+      <div
+        class="mx-auto d-flex flex-wrap mt-4 row gap-4 align-items-center"
+        th:if="${comics.size > 0}"
+      >
+        <div th:each="comic : ${comics}" class="card p-4 catCard">
+          <img
+            th:src="${comic.imageUrl}"
+            th:alt="${comic.title}"
+            class="card-img-top comicpicDetail"
+          />
+          <div class="card-body">
+            <h5 class="card-title" th:text="${comic.title}">Titolo</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              Autore: <span th:text="${comic.author}">Autore</span>
+            </h6>
+            <p class="card-text mt-2" th:text="${comic.description}">
+              Descrizione
+            </p>
+            <p class="mt-2">
+              <strong>Data di rilascio:</strong>
+              <span th:text="${comic.releaseDate}">Data</span>
+            </p>
+            <p>
+              <strong>Genere:</strong>
+              <span th:text="${comic.category.name}">Categoria</span>
+            </p>
+            <p>
+              <strong>Disponibilità:</strong>
+              <span th:text="${comic.stockQuantity}">0</span> pz
+            </p>
+            <p>
+              <strong>Prezzo:</strong>
+              <span th:text="${comic.price}">0</span> €
+            </p>
+            <a
+              th:href="@{'/comics/' + ${comic.id}}"
+              class="btn btn-sm btngen mt-2"
+              >Dettaglio</a
+            >
           </div>
         </div>
       </div>

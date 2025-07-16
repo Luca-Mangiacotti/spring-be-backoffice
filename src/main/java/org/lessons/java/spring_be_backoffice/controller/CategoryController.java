@@ -96,7 +96,7 @@ public class CategoryController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("category", categoryService.getById(id));
-        model.addAttribute("categories", categoryService.findAll());
+        // model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("edit", true);
         return "categories/create-edit";
     }

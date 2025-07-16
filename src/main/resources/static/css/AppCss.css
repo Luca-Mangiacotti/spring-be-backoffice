@@ -136,3 +136,9 @@ header {
   top: 180px;
   right: 330px;
 }
+
+/* CATEGORIES DETAIL CARD */
+.catCard {
+  width: 400px;
+  height: 900px;
+}
