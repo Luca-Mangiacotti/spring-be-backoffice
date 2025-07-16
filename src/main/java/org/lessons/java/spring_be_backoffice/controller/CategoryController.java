@@ -50,7 +50,7 @@ public class CategoryController {
         model.addAttribute("category", category);
         model.addAttribute("comics", comics);
 
-        return "categories/comics-by-category"; // crea questa pagina Thymeleaf
+        return "categories/comics-by-category";
     }
 
     // DETTAGLIO DI UNA Category (SHOW)
@@ -58,8 +58,6 @@ public class CategoryController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
 
-        // con questo comando è come fare una query SELECT * from categories where "id"
-        // =id
         Category category = categoryService.getById(id);
 
         if (category == null) {

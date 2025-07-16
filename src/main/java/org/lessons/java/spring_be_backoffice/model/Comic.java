@@ -58,7 +58,6 @@ public class Comic {
     private String imageUrl;
 
     @ManyToOne(fetch = FetchType.EAGER)
-
     @JoinColumn(name = "category_id")
     private Category category;
 
